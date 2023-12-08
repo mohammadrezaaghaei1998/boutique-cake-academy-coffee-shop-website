@@ -1,0 +1,423 @@
+html {
+    background: #bbb;
+    height: auto;
+  }
+  
+  .fancy {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-weight: 1000;
+    font-size: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+
+  .fancy {
+    line-height: 0.5;
+    text-align: center;
+  }
+  .fancy span {
+    display: inline-block;
+    position: relative;  
+  }
+  .fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    border-top: 3px solid rgb(0, 0, 0);
+    top: 0;
+    width: 600px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+  
+  .CCBackground {   
+    position: relative;
+    right: 30px;
+    padding-top: 50px;
+    background: #db2222c7;
+    justify-content: flex-end;
+    float: right;
+    height: 570px;
+  }
+  
+  .outercontainer {
+    position: relative;
+    top:100px;
+    right: 40px;
+    margin: 0px auto;
+    padding: 20px;
+    box-shadow: 0px 2px 4px #2c2b2b;
+    width: 500px;
+    background: transparent;
+    border: 2px solid rgb(255, 253, 253);
+    border-radius: 5px;
+  }
+  
+  .formcontainer {
+    margin-top: 20px;
+  }
+  
+  .purchasebtn {
+    margin-top: 20px;
+  }
+
+
+  .btn-success {
+    background: rgb(83, 83, 83);
+    position: relative;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    border: 1px solid ;
+    border-radius: 10px;
+}
+
+.btn-success:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(211, 22, 22, 0.1); 
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-success:after {
+    content: "\f054"; 
+    font-family: FontAwesome;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-success:hover {
+    background: linear-gradient(90deg, rgb(255, 255, 255), #0c0c0c);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: rgb(252, 249, 249);
+}
+
+.btn-success:hover:before {
+    opacity: 1;
+}
+
+.btn-success:hover:after {
+    opacity: 1;
+}
+
+.info-info{
+    position: relative;
+    left: 40px;
+    float: left;
+    margin-right: auto;
+    max-width: 615px;
+    padding: 10px;
+    background: #2c2b2bc0;
+    box-shadow: 0px 2px 4px #2c2b2b;
+    height: 380px;
+    width: 615px;
+    height: 600px;
+}
+
+.info{
+    position: relative;
+    top:140px;
+    left: 40px;
+    width: 600px;
+    float: left;
+    margin-right: auto;
+    max-width: 600px;
+    padding: 10px;
+    background: transparent;
+    box-shadow: 0px 2px 4px #2c2b2b;
+    height: 365px;
+    border: 2px solid black;
+    border-radius: 5px;
+
+
+}
+.form-groups {
+    margin-bottom: 15px;
+    color: white;
+}
+
+.text-right {
+    text-align: center;
+}
+
+.form-groups input{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background: #f5f2f2;
+    color: rgb(24, 23, 23);
+    width: 200px;
+}
+
+.form-groups textarea{
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 500px;
+    max-width: 500px;
+    background: #f8f6f6;
+    max-height: 150px;
+    height: 200px;
+}
+
+
+.form-groupsss input{
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+   
+
+}
+
+.form-groups label{
+    margin-right: 20px;
+}
+
+.open-address{
+    position: relative;
+    bottom: 80px;
+}
+
+
+.row{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+#city{
+    position: relative;
+    left: 80px;
+}
+#phone_number{
+    position: relative;
+    left: 45px;
+}
+
+#street{
+    position: relative;
+    left: 75px;
+}
+
+#full_name{
+    position: relative;
+    left: 10px;
+}
+
+#email{
+    position: relative;
+    left: 28px;
+}
+
+#district{
+    position: relative;
+    left: 52px;
+}
+
+#cep{
+    position: relative;
+    left: 52px;
+}
+
+#il{
+    position: relative;
+    left: 72px;
+}
+
+#streets{
+    position: relative;
+    left: 92px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .CCBackground {
+        right: 0;
+        float: none;
+        height: auto;
+    }
+
+    .outercontainer {
+        right: 0;
+        display: block;
+        width: 350px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    
+    .info-info
+     {
+        position: relative;
+        top: 120px;
+        left: -1px;
+        float: none;
+        margin: 0 auto; 
+        max-width: 100%; 
+        padding: 20px; 
+        box-shadow: none;
+        width: auto;
+        height: auto;
+    }
+
+    .info {
+        top: 50;
+        position: relative;
+        float: none;
+        left: -1px;
+        margin: 0 auto; 
+        max-width: 100%; 
+        padding: 20px; 
+        box-shadow: none;
+        width: auto;
+        height: 500px;
+    }
+
+    .text-right {
+        text-align: left; 
+    }
+
+    .form-groupsss{
+        position: relative;
+        justify-content: center;
+        text-align: center;
+        display: block;    
+    }
+
+    .form-groups{
+        position: relative;
+        justify-content: center;
+        text-align: center;
+
+    }
+  
+    .form-groups input {
+        margin-bottom: 20px;
+    }
+
+    #city,
+    #phone_number{
+        position: relative;
+    }
+
+    #cep{
+        position: relative;
+        float: left;
+        top: 50;
+        left: 35;
+    }
+    
+    #full_name{
+        position: relative;
+        left:-28;
+    }
+
+    #il{
+        position: relative;
+        top: 50px;
+        left: -280px;
+    }
+
+    #streets{
+        position: relative;
+        top: 50;
+        left:-255 ;
+    }
+
+    #names{
+        position: relative;
+        left: -35;
+    }
+
+    #email{
+        position: relative;
+        left: 27;
+    }
+
+    #district{
+        position: relative;
+        left: 57;
+    }
+
+    #city{
+        position: relative;
+        left: 47;
+    }
+
+    #street {
+        position: relative;
+        left: 50;
+    }
+
+    
+.open-address{
+    float: left;
+    top: 50;
+
+}
+    
+#address{
+    width: 210px;
+    max-width: 230px;
+    height: 100px;
+    max-height: 130px;
+}
+
+
+.btn-success{
+    position: relative;
+    top:700;
+    left: 140;
+}
+
+
+
+.fancy span:before,
+  .fancy span:after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    border-top: 3px solid rgb(0, 0, 0);
+    top: 0;
+    width: 120px;
+  }
+  .fancy span:before {
+    right: 100%;
+    margin-right: 15px;
+  }
+  .fancy span:after {
+    left: 100%;
+    margin-left: 15px;
+  }
+}
+
+
+
+   

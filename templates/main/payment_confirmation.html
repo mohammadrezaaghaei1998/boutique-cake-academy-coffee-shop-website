@@ -1,0 +1,6 @@
+{% block content %}
+  <p>Payment is successfully done.</p>
+  {% if payment_success %}
+    <p>Your reference code: {{ reference_code }}</p>
+  {% endif %}
+{% endblock %}

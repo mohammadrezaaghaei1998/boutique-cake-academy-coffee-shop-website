@@ -1,0 +1,111 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<section class="card-page" style=" background: #ddd;
+min-height: 100vh;
+vertical-align: middle;
+display: flex;
+font-family: sans-serif;
+font-size: 0.8rem;
+font-weight: bold;">
+<div class="shopping-card">
+    <div class="row">
+        <div class="col-md-8 cart">
+            <div class="shopping-title">
+                <div class="row">
+                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col align-self-center text-right text-muted">3 items</div>
+                </div>
+            </div>    
+            <div class="row border-top border-bottom">
+                <div class="row align-items-center">
+                    <div class="col-2 shopping-img"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col">
+                        <div class="row text-muted">Shirt</div>
+                        <div class="row">Cotton T-shirt</div>
+                    </div>
+                    <div class="col">
+                        <a class="quantity-btn"  href="#">-</a><a href="#" class="quantity-btn border">1</a><a class="quantity-btn" href="#">+</a>
+                    </div>
+                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                </div>
+            </div>
+            <div class="back-to-shop"><a class="quantity-btn" href="{% url 'home' %}">&leftarrow;</a><span class="text-muted ">Back to shop</span></div>
+        </div>
+        <div class="col-md-4 summary">
+            <div><h5><b>Summary</b></h5></div>
+            <hr>
+            <div class="row">
+                <div class="col" style="padding-left:5px;">ITEMS 3</div>
+                <div class="col text-right">&euro; 132.00</div>
+            </div>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                <div class="col">TOTAL PRICE</div>
+                <div class="col text-right">&euro; 137.00</div>
+            </div>
+            <button class="checkout-btn">CHECKOUT</button>
+        </div>
+    </div>
+    
+</div>
+</section>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+<section class="card-page" style=" min-height: 100vh; vertical-align: middle; display: flex; font-family: sans-serif; font-size: 0.8rem; font-weight: bold;">
+    <div class="shopping-card" style="padding-bottom:50px; color:black; background:#aaa;">
+        <div class="row">
+            <div class="col-md-8 cart" style="padding-top:10px;">
+                <div class="shopping-title">
+                    <div class="row">
+                        <div class="col"><h4><b>FAVORİLER</b></h4></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    {% for order in previous_orders %}                            <div class="row align-items-center">
+                                <div class="col-2 shopping-img">
+                                    {% if order.academy_product %}
+                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ order.academy_product.image.url }}">
+                                    {% elif  order.coffee_delivery %}
+                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ order.coffee_delivery.image.url }}">
+                                    {% endif %}
+                                </div>
+                                <div class="col">
+                                    <div class="row text-muted">
+                                        <!-- Display the name of the favorite item -->
+                                        {% if order.academy_product %}
+                                            {{  order.academy_product.name }}
+                                        {% elif order.coffee_delivery %}
+                                            {{ order.coffee_delivery.name }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="row">
+                                        <!-- Display additional information about the favorite item if needed -->
+                                        <!-- For example: {{ favorite_item.academy_product.description }} -->
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    {% if order.academy_product %}
+                                        {{ order.academy_product.price }} TL      
+                                    {% elif order.coffee_delivery %}
+                                        {{ order.coffee_delivery.price }} TL
+                                    {% endif %}
+                                </div>
+                               
+                            </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>Eski sipariş bulunmadı.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

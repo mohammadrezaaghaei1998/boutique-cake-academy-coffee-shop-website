@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+
+<section class="login-register-page">
+    {% if messages %}
+        <ul class="messages text-center"  style="padding-top: 50px;">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="login-register-main">       
+    <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="login-register">
+            <form class="default-form"  method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <label class="default-form-label" for="chk" aria-hidden="true">HESAP OLUŞTUR</label>
+                <input class="default-form-input" type="text" id="username" name="username" placeholder="Kullanıcı adı" required="">
+                <input class="default-form-input" type="email"  id="email_signup" name="email" placeholder="E-posta" required="">
+                <input class="default-form-input" type="password" id="password_signup" name="password" placeholder="Şifre" required="">
+                <button class="default-form-button">Oluştur</button>
+                <a href="{% provider_login_url 'google' %}" style="padding-left:50px; color:#862d85;">
+                    <img src="{% static "assets/img/google-logo.png" %}" alt="Google Logo">google hesabınızla devam edin
+                </a>
+            </form>
+        </div>
+        <div class="login-register login">
+            <form class="default-form" method="post"  action="{% url 'login_register' %}">
+                {% csrf_token %}
+                <label class="default-form-label" for="chk"  aria-hidden="true">GIRIŞ</label>
+                <input class="default-form-input" type="text" id="username" name="username" placeholder="Kullanıcı adı" required>
+                <input class="default-form-input" type="password" id="password" name="password" placeholder="Şifre" required>
+                <button class="default-form-button">Giriş</button>
+                <a href="{% url 'reset_password' %}" style="padding-left:95px; color:#862d85;">Şifrenizi unnutunuz mu?</a>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

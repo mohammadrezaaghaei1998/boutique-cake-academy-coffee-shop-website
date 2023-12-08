@@ -1,0 +1,91 @@
+
+<div id="topbar" class="d-flex align-items-center fixed-top wow fadeInDown">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        {% comment %} <i class="bi bi-clock d-flex align-items-center ms-4"><span> Mon-Sat: 11AM - 22PM</span></i> {% endcomment %}
+      </div>
+    </div>
+</div>
+
+
+
+  <div class="bordered-header wow fadeInDown">
+    <header id="header" class="fixed-top d-flex align-items-cente wow fadeInDown">
+      <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between wow fadeInDown">
+        <h1 class="logo me-auto me-lg-0" style="font-family: 'Brush Script MT', cursive;"><a href="">Meliora</a></h1>
+        {% comment %} <h1 class="logo me-auto me-lg-0" style="font-family: 'Brush Script MT', cursive;"><ahref="">HaslisHan </h1>  {% endcomment %}
+        <nav id="navbar" class="navbar order-last order-lg-0 wow fadeInDown">
+          <ul>
+            <li><a class="nav-link scrollto active" href="{% url 'home' %}">Ev</a></li>
+            <li class="dropdown"><a href="#hizmetler"><span>Hizmetler</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a  href="#hizmetler">Bütik pasta eğitimi</a></li> 
+                <li><a  href="#hizmetler">Bütik pasta siparışı</a></li>               
+                <li><a  href="#hizmetler">Meliora kafe</a></li>
+                <li><a  href="#hizmetler">Donuk ürün satışı</a></li>
+                <li><a  href="#hizmetler">Paket kahve satışı</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="#hakkımızda">Hakkımızda</a></li>
+            <li><a class="nav-link scrollto" href="#menu">Menü</a></li>
+            <li><a class="nav-link scrollto" href="#specials">Kampanyalar</a></li>
+            <li><a class="nav-link scrollto" href="#şef">Şef</a></li>
+            <li><a class="nav-link scrollto" href="#resimler">Resimler</a></li>
+            <li><a class="nav-link scrollto" href="#iletişim">Iletişim</a></li>
+              {% comment %} 
+            <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                {% if user.is_authenticated %}
+                  <li><a href="{% url 'custom_logout' %}">ÇIKIŞ</a></li>
+                  <li><a href="{% url 'dashboard' %}">SAYFAM</a></li>
+                {% else %} 
+                  <li><a href="{% url 'login_register' %}">GIRIŞ</a></li>               
+                  <li><a href="{% url 'login_register' %}">HESAP OLUŞTUR</a></li>
+                {% endif %}
+              </ul>
+            </li> {% endcomment %}
+                    
+          </ul>
+          <a style="border:none;" href="{% url 'cart_detail' %}" class="cart-link custom-class">
+            <img style="background:yellow; border:2px solid; border-radius:50%; width:30px; height:30px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAASpJREFUOE+11D8oRVEYAPDfMzAxyYCNKCulbEqxKINNksIquxIjJRbFJKyyMMhiYSA2ZWIQyaiUjY7u1VPuu394Z7ud7/zOOff7vlNShVGqgilG69EdbXCL579sFqM9uCyDRrFfFI7RZsygBvO4Rzs+isC//dMDjGAIx/+FDuAED7jLia7gKCn7IVmdOcEQfojhJHQWawXQCewkoQ14QV0O+A2NeK9U/FuYzoFuYzLEV0K7cJMD7cdpGhrmz9CXAX5Ca1zXab0/hr0M6BIW4rg0tDaq16YKcOi6tqgLv8LS0BDTgdDGSeMV1+WTWdBQs+NYx27Z4l6s4gJzedHH6KRXCK9ZPDajRyh8tyAkK/P1FzGF5ei08dpBbOA8usn3blmunyH5P0Oqgn4CkUguFtfqsXoAAAAASUVORK5CYII="/>
+            <span style="font-size:15px; padding-left:8px;" class="cart-count">{{ total_items }}</span>
+          </a>
+          {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" style="background:yellow; border:2px solid; border-radius:50%; width:30px; height:30px;  text-align:center;
+            justify-content:center;">
+            <i class="fa-solid fa-user fa-2xl" style="color: black; padding-right:3px; font-size:20px;"></i>
+          </a>
+
+          {% if request.user.is_authenticated %}
+            {% if notification_count > 0 %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">{{ notification_count}}</span>
+            {% else %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">0</span>
+            {% endif %}
+          {% else %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">0</span>
+          {% endif %}
+          
+          {% else %}
+            <a href="{% url 'login_register' %}" style="background:yellow; border:2px solid; border-radius:50%; width:30px; height:30px;  text-align:center;
+            justify-content:center;"><i class="fa-solid fa-user fa-2xl" style="color: black;
+             padding-right:3px; font-size:20px;"></i></a> 
+
+             {% if request.user.is_authenticated %}
+            {% if notification_count > 0 %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">{{ notification_count}}</span>
+            {% else %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">0</span>
+            {% endif %}
+          {% else %}
+                <span class="notification_count" style="padding-left:5px; color:yellow;">0</span>
+          {% endif %}
+          {% endif %}
+                 
+        </nav>
+        
+        <!-- .navbar -->
+
+      </div>
+    </header>
+  </div>

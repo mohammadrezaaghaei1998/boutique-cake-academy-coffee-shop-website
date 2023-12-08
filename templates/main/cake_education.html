@@ -1,0 +1,167 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="education-page" >
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex align-items-center" style="background-image: url('{% static "assets/img/cake-bg.jpg.jpg" %}'); background-size: cover;">
+        <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+          <div class="row">
+            <div class="main">
+              <div class="video-container" >
+                <video class="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                  <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4">
+                </video>
+              </div>
+              <div class="col-lg-8">
+                <h1>Bütik pasta <span> eğitmi</span></h1>
+                <h2>10 yıldan fazla deneyim</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- Hero Section -->
+
+    <!-- Education Cards Section -->
+    <h6 class="custom-heading" style="background:#151515; margin-bottom:-10px; padding:20px 0; color:#f7e655;">EĞITIMLER</h6>
+    <div class="crad-education">
+        <div class="card-container">
+        {% for course in courses %}
+          <div class="card">
+            <div class="circle" style="--clr:#06BBCC;">
+              <div class="logo">{{ course.name }}</div>
+            </div>
+            <div class="content">
+              <h2>{{ course.price}} Tl</h2>
+              <p>{{course.title}}</p>
+              <p>{{course.hour}} Saat</p>
+              
+               <a href="{%  url 'purchase_course' course.id %}">Kayıt ol</a> 
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+    <!-- Education Cards Section -->
+
+    <!-- Education About Section -->
+    <div class="education-about">
+        <h1 class="section-title">eğitim hakkında</h1>
+        <div class="fixed-bg"></div>
+        <div class="cake-content mx-md-5">
+            <h2>Neden eğitim önemlidir?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adionsectetur adipiscing r adipiscing elit. V aonsectetur adipiscing r adipiscing elit. V aponsectetur adipiscing r adipiscing elit. V aiscionsectetur adipiscing r adipiscing elit. V ang r adipiscing elit. V adipiscing elit. Vr adipiscing elit. Vr adipiscing elit. Velit.r adipiscing elit. V Vivamus at metus vel felis consequat posuere ac eget ex.</p>
+        </div>
+    </div>
+    <!-- Education About Section End-->
+
+    <!-- Image Slider Section -->
+    <div class="edu-gal"> 
+        <h6 class="custom-heading"  style="padding:20px 0; color:#f7e655">RESIMLER</h6>
+        <div class="slider" style="width: 1200px; height: 500px;">
+            <div class="slider__slide slider__slide--active" data-slide="1" style="width: 1200px; height: 500px;">
+                <div class="slider__wrap" style="width: 1200px; height: 500px;">
+                    <div class="slider__back" style="width: 1200px; height: 500px;"></div>
+                </div>
+                <div class="slider__inner" >
+                    <div class="slider__content">
+                        <h1>Slide <br> One</h1><a class="go-to-next">Sonraki</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__slide" data-slide="2"  style="width: 1200px; height: 500px;">
+                <div class="slider__wrap"  style="width: 1200px; height: 500px;">
+                    <div class="slider__back"  style="width: 1200px; height: 500px;"></div>
+                </div>
+                <div class="slider__inner">
+                    <div class="slider__content">
+                        <h1>Slide <br> Two</h1><a class="go-to-next">Sonraki</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__slide" data-slide="3"  style="width: 1200px; height: 500px;">
+                <div class="slider__wrap"  style="width: 1200px; height: 500px;">
+                    <div class="slider__back"  style="width: 1200px; height: 500px;"></div>
+                </div>
+                <div class="slider__inner">
+                    <div class="slider__content">
+                        <h1>Slide <br> Three</h1><a class="go-to-next">Sonraki</a>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__slide" data-slide="4"  style="width: 1200px; height: 500px;">
+            <div class="slider__wrap"  style="width: 1200px; height: 500px;">
+                <div class="slider__back"  style="width: 1200px; height: 500px;"></div>
+            </div>
+            <div class="slider__inner">
+                <div class="slider__content">
+                    <h1>Slide <br> Four</h1><a class="go-to-next">Sonraki</a>
+                </div>
+            </div>
+            </div>
+            <div class="slider__slide" data-slide="5"  style="width: 1200px; height: 500px;">
+            <div class="slider__wrap"  style="width: 1200px; height: 500px;">
+                <div class="slider__back"  style="width: 1200px; height: 500px;"></div>
+            </div>
+            <div class="slider__inner">
+                <div class="slider__content">
+                    <h1>Slide <br> Five</h1><a class="go-to-next">Sonraki</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Image Slider Section End-->
+
+
+
+
+    <!-- Contact  start-->
+
+    <div class="cakes-contact">
+        <div class="backgroundd">
+          <div class="containers">
+            <div class="screen">
+              <div class="screen-header">
+              <div class="screen-body">
+                <div class="screen-body-item left">
+                  <div class="app-title">
+                    <span style="padding-bottom:70px; font-size:40px;">Iletişim</span>
+                    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+                  </div>
+                  <div class="app-contact">ILETIŞIM : +62 81 314 928 595</div>
+                </div>
+                <div class="screen-body-item">
+                <form action="{% url 'contact' %}" method="POST"> 
+                  {% csrf_token %}
+                  <div class="app-form">
+                      <input class="app-form-control" type="text" name="name" id="name" placeholder="Gökhan Atay" value="Gökhan Atay">
+                    </div>
+                    <div class="app-form-group">
+                      <input class="app-form-control" type="email" name="email" id="email" placeholder="Gökhan@Atay.com">
+                    </div>
+                    <div class="app-form-group">
+                      <input class="app-form-control" type="text" name="subject" id="subject" placeholder="Konu">
+                    </div>
+                    <div class="app-form-group message">
+                      <input class="app-form-control" type="text" name="message" id="message" placeholder="MESAJ">
+                    </div>
+                    <div class="app-form-group buttons">
+                      <button type="submit" class="app-form-button">GONDER</button>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Contact  end-->
+
+        
+
+</div>
+{% endblock %}

@@ -1,0 +1,309 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+<div class="dasboard-container" >
+    <div class="menu" style="padding-bottom:500px;">
+        <div class="title">MENÜ</div>
+        <ul class="nav">
+          <li><a href="#">HESAP</a></li>
+          <li><a href="#">GIZLILIK</a></li>
+          <li><a href="#">SIPARIŞLERIM</a></li>
+          <li><a href="#">FAVORILER {% if request.user.is_authenticated %}
+                                        {% if favorite_count > 0 %}
+                                            <span class="favorite-count">{{ favorite_count }}</span>
+                                        {% else %}
+                                            <span class="favorite-count">0</span>
+                                        {% endif %}
+                                    {% else %}
+                                            <span class="favorite-count">0</span>
+                                    {% endif %}</a> </li>
+          <li><a href="#">ILAN</a></li>
+        </ul>
+        {% if user.is_authenticated %}               
+            <a href="{% url 'custom_logout' %}" style="color:white;">
+                <i style="font-size:24px; display:inline-block; position:relative; margin-top:490px; margin-left:50px;" class="fa">&#xf08b;</i>
+            </a>
+        {% endif %}
+    </div>
+    
+    <div class="dashboard-details">
+        <div class="intro">
+            <div class="content-section" style="display: none;">
+                <section class="card-page" style=" background: #222;
+                min-height: 100vh;
+                vertical-align: middle;
+                display: flex;
+                font-family: sans-serif;
+                font-size: 0.8rem;
+                font-weight: bold;
+                margin-top:100px;">
+                  <div class="shopping-card" style="background:#aaa; color:black; min-height: 30vh; padding-top:20px;
+                  text-align:left; padding-left:10px; margin-top:-30px;">
+                  <div class="shopping-title">
+                    <div class="row" style="text-align:center;">
+                        <div class="col"><h4><b>HESAP BILGILERI</b></h4></div>
+                    </div>
+                 </div>
+                    {% if user_information %}
+                    <p>Username: {{ request.user.username }}</p>
+                    <p>Email: {{ request.user.email }}</p>
+                    {% else %}
+                    <p style="font-size: 20px; text-transform: uppercase;">SOSYAL HESAPLA GIRIŞ YAPILDIĞINDAN DOLAYI KULLANICI BILGISI BULUNAMADI</p>
+                    {% endif %}
+                    <!-- Rest of your shopping cart content -->
+                  </div>
+                </section>
+            </div>
+        </div>
+        
+        
+        <div class="intro">
+            <div class="content-section" style="display: none;">
+                GIZLILIK
+                {% if request.user.socialaccount_set.all %}
+                    <p style="font-size:20px;  text-transform: uppercase;">Sosyal hesapla giriş yapıldığından dolayı Şifreniz değiştirilemiyor</p>
+                {% else %}
+                <div class="change-password">
+                    <form class="password-form" method="post" action="{% url 'change_password' %}">   
+                    {% csrf_token %}                     
+                        <div class="form-group">
+                            <label for="oldPassword">ESKI PAROLA:</label>
+                            <input type="password" name="old_password" id="oldPassword" class="password-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">YENI PAROLA:</label>
+                            <div class="password-input-container">
+                              <input type="password" name="new_password1" id="newPassword" class="password-input small-font" required>
+                              <i class="toggle-password fas fa-eye" data-target="newPassword"></i>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="confirmPassword">ONAYLA:</label>
+                            <div class="password-input-container">
+                              <input type="password" name="new_password2" id="confirmPassword" class="password-input small-font" required>
+                              <i class="toggle-password fas fa-eye" data-target="confirmPassword"></i>
+                            </div>
+                          </div>
+                            <button type="submit" class="password-button"> Değiştir</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+           
+
+        <div class="intro">
+            <div class="content-section" style="display: none;">
+                
+<section class="card-page" style=" min-height: 100vh; vertical-align: middle; display: flex; font-family: sans-serif; font-size: 0.8rem; font-weight: bold; margin-top:-150px;">
+    <div class="shopping-card" style="padding-bottom:50px; color:black; background:#aaa;">
+        <div class="row">
+            <div class="col-md-8 cart" style="padding-top:10px;">
+                <div class="shopping-title">
+                    <div class="row">
+                        <div class="col"><h4><b>SİPARİŞLERİM</b></h4></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    <div class="row align-items-center">
+                        {% for order in previous_orders %}                           
+                                <div class="col-2 shopping-img">
+                                    {% if order.academy_product %}
+                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ order.academy_product.image.url }}">
+                                    {% elif  order.coffee_delivery %}
+                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ order.coffee_delivery.image.url }}">
+                                    {% endif %}
+                                </div>
+                                <div class="col">
+                                    <div class="row text-muted">
+                                        <!-- Display the name of the favorite item -->
+                                        {% if order.academy_product %}
+                                            {{  order.academy_product.name }}
+                                        {% elif order.coffee_delivery %}
+                                            {{ order.coffee_delivery.name }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="row">
+                                        <!-- Display additional information about the favorite item if needed -->
+                                        <!-- For example: {{ favorite_item.academy_product.description }} -->
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    {% if order.academy_product %}
+                                        {{ order.academy_product.price }} TL      
+                                    {% elif order.coffee_delivery %}
+                                        {{ order.coffee_delivery.price }} TL
+                                    {% endif %}
+                                </div>
+                                <div class="col">
+                                    {% if order.academy_product %}
+                                        {{ order.created_at }}      
+                                    {% elif order.coffee_delivery %}
+                                        {{ order.created_at  }} 
+                                    {% endif %}
+                                </div>
+                               
+                            </div>
+                            </div>
+                        {% endfor %}
+                   
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        
+            </div>
+        </div>
+        
+        <div class="intro" style="margin-top:-100px;">
+            <div class="content-section" style="display: none;">
+                {% comment %} FAVORILERIM   {% endcomment %}
+                <section class="card-page" style=" min-height: 100vh; vertical-align: middle; display: flex; font-family: sans-serif; font-size: 0.8rem; font-weight: bold;">
+                    <div class="shopping-card" style="padding-bottom:50px; color:black; background:#aaa;">
+                        <div class="row">
+                            <div class="col-md-8 cart" style="padding-top:10px;">
+                                <div class="shopping-title">
+                                    <div class="row">
+                                        <div class="col"><h4><b>FAVORİLER</b></h4></div>
+                                    </div>
+                                </div>
+                                <div class="row border-top border-bottom">
+                                    {% if favorite_items %}
+                                        {% for favorite_item in favorite_items %}
+                                            <div class="row align-items-center">
+                                                <div class="col-2 shopping-img">
+                                                    {% if favorite_item.academy_product %}
+                                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ favorite_item.academy_product.image.url }}">
+                                                    {% elif favorite_item.coffee_delivery %}
+                                                        <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{{ favorite_item.coffee_delivery.image.url }}">
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col">
+                                                    <div class="row text-muted">
+                                                        <!-- Display the name of the favorite item -->
+                                                        {% if favorite_item.academy_product %}
+                                                            {{ favorite_item.academy_product.name }}
+                                                        {% elif favorite_item.coffee_delivery %}
+                                                            {{ favorite_item.coffee_delivery.name }}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="row">
+                                                        <!-- Display additional information about the favorite item if needed -->
+                                                        <!-- For example: {{ favorite_item.academy_product.description }} -->
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    {% if favorite_item.academy_product %}
+                                                        {% if favorite_item.academy_product.discount_price %}
+                                                            <del>{{ favorite_item.academy_product.price }} TL</del>
+                                                            {{ favorite_item.academy_product.discount_price }} TL
+                                                        {% else %}
+                                                            {{ favorite_item.academy_product.price }} TL
+                                                        {% endif %}
+                                                    {% elif favorite_item.coffee_delivery %}
+                                                        {% if favorite_item.coffee_delivery.discount_price %}
+                                                            <del>{{ favorite_item.coffee_delivery.price }} TL</del>
+                                                            {{ favorite_item.coffee_delivery.discount_price }} TL
+                                                        {% else %}
+                                                            {{ favorite_item.coffee_delivery.price }} TL
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </div>
+                                                
+                                                <div class="col">
+                                                    {% if favorite_item.academy_product %}
+                                                        <a href="{% url 'cart_add' academy_product_id=favorite_item.academy_product.id coffee_delivery_id=0 %}" class="add-to-cart 1" style="color:black; margin-left:20px;"><i class="fas fa-shopping-cart"></i></a>
+                                                    {% endif %}
+                                                    {% if favorite_item.coffee_delivery %}
+                                                        <a href="{% url 'cart_add' academy_product_id=0 coffee_delivery_id=favorite_item.coffee_delivery.id %}"  class="add-to-cart 1" style="color:black;"><i class="fas fa-shopping-cart"></i></a>
+                                                    {% endif %}
+                                                
+                                                    {% if favorite_item.academy_product %}
+                                                        <a href="{% url 'remove_from_favorite' item_type='academy_product' item_id=favorite_item.academy_product.id %}" class="remove-favorite" style="color:red; "><i class="fas fa-trash" style=" margin-left:55px;"></i></a>
+                                                    {% endif %}
+                                                    {% if favorite_item.coffee_delivery %}
+                                                        <a href="{% url 'remove_from_favorite' item_type='coffee_delivery' item_id=favorite_item.coffee_delivery.id %}" class="remove-favorite" style="color:red; margin-left:25px;"><i class="fas fa-trash" style=" margin-left:25px;"></i></a>
+                                                    {% endif %}
+                                                   
+                                                </div>
+                                            </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>FAVORİLERİNİZ BOŞ.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+        
+        
+        
+        <div class="intro">
+            <div class="content-section" style="display: none;">
+                Ilan
+                <section class="card-page" style="background: #ddd; min-height: 100vh; vertical-align: middle; display: flex; font-family: sans-serif; font-size: 0.8rem; font-weight: bold;">
+                    <div class="shopping-card">
+                        <!-- Your shopping cart content here -->
+                
+                        <!-- Notification section -->
+                        {% if user_notifications %}
+                            {% for notification in user_notifications %}
+                                <li>
+                                    {% if notification.academy_product %}
+                                    <p>
+                                        <strong>Academy Product:</strong> {{ notification.academy_product.name }}
+                                    </p>
+                                    <p>
+                                        <strong>Original Price:</strong> {{ notification.academy_product.price }}
+                                    </p>
+                                    <p>
+                                        <strong>Discount Price:</strong> {{ notification.academy_product.discount_price }}
+                                    </p>
+                                    <img src="{{ notification.academy_product.image.url }}" alt="{{ notification.academy_product.name }}" width="100">
+                                    {% endif %}
+                                    {% if notification.coffee_delivery %}
+                                    <p>
+                                        <strong>Coffee Delivery:</strong> {{ notification.coffee_delivery.name }}
+                                    </p>
+                                    <p>
+                                        <strong>Original Price:</strong> {{ notification.coffee_delivery.price }}
+                                    </p>
+                                    <p>
+                                        <strong>Discount Price:</strong> {{ notification.coffee_delivery.discount_price }}
+                                    </p>
+                                    <img src="{{ notification.coffee_delivery.image.url }}" alt="{{ notification.coffee_delivery.name }}" width="100">
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<section style="background:#222;">
+</section>
+
+<section style="background:#222;">
+</section>
+
+<section style="background:#222;">
+</section>
+
+
+
+{% endblock  %}

@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="academy-header">
+    <section class="academy-video-sec-area pb-100 pt-40" id="about">
+      <div class="container">
+        <div class="row justify-content-center align-items-center"> <!-- Center align content -->
+          <div class="col-lg-6">
+            <div class="academy-delivery">
+              <h2 class="academy-rotated-title">Delivery Information</h2>
+              <p class="academy-delivery-text">Your delivery details and information go here.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 academy-video-right">
+            <div class="academy-video-wrapper">
+              <video autoplay loop muted playsinline style="width: 520px; border: 5px solid #black; border-radius: 10px;">
+                <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- Start gallery Area -->
+  <section class="academy-menu section-gap" id="gallery">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-10">
+                <div class="title text-center">
+                    <h1 class="mb-10">What kind of Coffee we serve for you</h1>
+                    <h5>Who are in extremely love with eco-friendly system.</h5>
+                </div>
+            </div>
+        </div>						
+        <div class="row">
+            {% for academy_product in academy_product %}
+            <div class="col-lg-4">
+                <div class="img-pop-home">
+                    <img src="{{ academy_product.image.url }}" alt="">
+                    <div class="product-info">
+                        <h3 style="padding-top:20px;">{{ academy_product.name }}</h3>
+                        <p>{{ academy_product.price }} TL </p>
+                        {% if academy_product.discount_price %}
+                          {% if academy_product.discount_price != None %}
+                              <p style="margin-top:-40px;">indirim: {{ academy_product.discount_price }} TL</p>
+                          {% endif %}
+                        {% endif %}
+                        <div class="icon-box-card-favorite">
+                            <a href="{% url 'cart_add' academy_product_id=academy_product.id coffee_delivery_id=0 %}" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a> 
+                            <a href="{% url 'add_to_favorite' 'academy_product' academy_product.id  %}" class="add-to-favorite"><i class="fas fa-heart"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>	
+</section>
+
+
+
+<div class="academy-page-contact">
+    <form action="{% url 'second_contact' %}" method="post">
+        {% csrf_token %}
+        <label for="name">Ad Soyadı:</label>
+        <input type="text" id="name" name="name" placeholder="Gökhan Atay" required><br>
+        
+        <label for="email">E-posta:</label>
+        <input type="email" id="email" name="email" placeholder="Gökhan@Atay.com" required><br>
+        
+        <label for="message">Mesaj:</label>
+        <textarea id="message" name="message" rows="1" required></textarea><br>
+        
+        <button type="submit">Gönder</button>
+      </form>
+</div>
+<!-- End gallery Area -->
+
+
+{% endblock %}

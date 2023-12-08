@@ -1,0 +1,86 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <!-- academy page header  start -->
+
+<div class="academy-page">
+    <section class="video-sec-area pb-100 pt-40" id="about">
+        <div class="animation-overlay"></div>
+        <div class="container">
+          <div class="row justify-content-start align-items-center">
+            <div class="col-lg-6">
+              <image class="academy-page-image" src="{% static "assets/img/seed.png" %}" type="image">
+              <div class="delivery">
+                <h2 class="rotated-title">Delivery Information</h2>
+                <p class="delivery-text">Your delivery details and information go here.</p>
+              </div>
+            </div>
+            <div class="col-lg-6 video-right justify-content-end align-items-end d-flex">
+              <div class="overlay overlay-bg"></div>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline style="width: 520px; border: 5px solid #862d85; border-radius: 30px;">
+                  <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- academy page header  end -->
+
+
+
+    <!-- academy page products  start -->
+
+    <div class="sale-product">
+        <div class="sale-container">
+        {% for coffee_delivery_item in coffee_delivery%}
+            <div class="sale">
+                <div class="sale-inner">
+                    <div class="sale-front">
+                        <img src="{{ coffee_delivery_item.image.url}}" alt="">
+                    </div>
+                    <div class="sale-back">
+                        <img src="{{ coffee_delivery_item.image.url }}" alt="">
+                        <h3>{{coffee_delivery_item.name}} {{coffee_delivery_item.gram}} gr</h3>
+                        <h1>{{coffee_delivery_item.price}} TL</h1>
+                        {% if coffee_delivery_item.discount_price is not None %}
+                         <p>indirim: {{ coffee_delivery_item.discount_price }} TL</p>
+                        {% endif %}
+
+                        <div class="icon-box">
+                            <a style="color:black;" href="{% url 'cart_add' coffee_delivery_id=coffee_delivery_item.id academy_product_id=0  %}" class="add-to-cart"><i class="fas fa-shopping-cart"></i></a>
+                            <a style="color:black; padding:20px;" href="{% url 'add_to_favorite' 'coffee_delivery' coffee_delivery_item.id %}" class="add-to-favorite"><i class="fas fa-heart"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <!-- academy page products  end -->
+
+
+
+    <!-- academy page contact  start -->
+
+    <div class="contact-deliver">
+        <form action="{% url 'second_contact' %}" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Gökhan Atay" required><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"  placeholder="Gökhan@Atay.com" required><br>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="1" placeholder="Mesaj" required></textarea><br>
+            
+            <button type="submit">Göder</button>
+          </form>
+    </div>
+    <!-- academy page contact  end -->
+
+{% endblock %}

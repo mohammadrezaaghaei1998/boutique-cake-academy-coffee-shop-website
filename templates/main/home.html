@@ -1,0 +1,314 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+        
+            
+<!-- header start-->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <div class="row">
+        <div class="main">
+          <div class="video-container">
+            <video class="video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+              <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4">
+            </video>
+          </div>
+          <div class="col-lg-8">
+            <h1>Meliora'ya<span> hoş geldiniz</span></h1>
+            <h2>10 yıldan fazla deneyim</h2>
+          </div>
+          <div class="col-lg-4 d-flex flex-column align-items-start justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+            <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a>
+            <h1 style="margin-top: 10px; text-align: left; font-size: 24px;">bizi dinle</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- header end-->
+
+
+<!-- about us start -->
+  <section class="ftco-about d-md-flex" id="hakkımızda" data-aos="zoom-in" data-aos-delay="100">
+    <div class="one-half img" style="background-image: url({% static 'assets/img/about.jpg' %});"></div>
+      <div class="one-half ftco-animate">
+          <div class="overlap">
+              <div class="heading-section ftco-animate">
+                  <span class="subheading"  style="font-family: 'Brush Script MT', cursive;
+                          font-size: 50px; color: #f7e655; line-height: 0.8;">Keşfetmek</span>
+                  <h2 class="mb-4" style="font-family: 'Brush Script MT', cursive; font-size: 40px; color: #862d85;">Hikayemiz</h2>
+              </div>
+          <div>
+            <p>Bir gün bir ssehhabe</p>
+          </div>
+        </div>
+    </div>
+</section>
+<!-- about us end-->
+
+
+<!-- services start-->
+<section class="def-hero-section" id="hizmetler" data-aos="zoom-in" data-aos-delay="100" style="height:700px; "> 
+  <h2 style="margin-top:-200px;" class="def-section-title-hizmetler">HIZMETLER</h2>
+  <div class="def-hero-background" ></div>
+    <div class="def-card-grid" style="padding-top:50px;">
+        <a class="def-card" href="{% url 'cake_education' %}">
+            <div class="def-card__background">
+                <video autoplay loop muted playsinline>
+                  {% comment %} <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4"> {% endcomment %}
+                </video>
+              </div>
+            <div class="def-card__content">
+            <p class="def-card__category">Category</p>
+            <h3 class="def-card__heading"> BUTIK PASTA EĞITIMI</h3>
+            </div>
+            <div class="def-card__button">
+                <button class="def-btn">Incele</button>
+            </div>
+        </a>
+         <a class="def-card" href="{% url 'cofe_home' %}">
+          <div class="def-card__background">
+              <video autoplay loop muted playsinline>
+                {% comment %} <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4"> {% endcomment %}
+              </video>
+            </div>
+          <div class="def-card__content" >
+          <p class="def-card__category">Category</p>
+          <h3 class="def-card__heading"> MELIORA KAFE</h3>
+          </div>
+          <div class="def-card__button">
+              <button class="def-btn">Incele</button>
+          </div>
+        </a>
+
+        <a class="def-card" href="{% url 'academy' %}">
+          <div class="def-card__background">
+              <video autoplay loop muted playsinline>
+                {% comment %} <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4"> {% endcomment %}
+              </video>
+            </div>
+          <div class="def-card__content">
+          <p class="def-card__category">Category</p>
+          <h3 class="def-card__heading"> DONUK ÜRÜN SATIŞI</h3>
+          </div>
+          <div class="def-card__button">
+              <button class="def-btn">Incele</button>
+          </div>
+        </a>
+
+        <a class="def-card" href="{% url 'cofee_delivery' %}">
+          <div class="def-card__background">
+              <video autoplay loop muted playsinline>
+                {% comment %} <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4"> {% endcomment %}
+              </video>
+            </div>
+          <div class="def-card__content">
+          <p class="def-card__category">Category</p>
+          <h3 class="def-card__heading"> PAKET KAHVE SATIŞI</h3>
+          </div>
+          <div class="def-card__button">
+              <button class="def-btn">Incele</button>
+          </div>
+        </a>
+
+        <a class="def-card" href="#">
+          <div class="def-card__background">
+              <video autoplay loop muted playsinline>
+                {% comment %} <source src="{% static "assets/img/video2.mp4" %}" type="video/mp4"> {% endcomment %}
+              </video>
+            </div>
+          <div class="def-card__content">
+          <p class="def-card__category">Category</p>
+          <h3 class="def-card__heading"> BUTIK PASTA SIPARIŞI</h3>
+          </div>
+          <div class="def-card__button">
+              <button class="def-btn">Incele</button>
+          </div>
+        </a>
+      <div>
+    <div>
+</section>
+  <!-- services end-->
+
+
+
+<!-- about us2 start-->
+
+  <section class="custom-branch ftco-counter ftco-bg-light img" id="section-counter" style="background-image: url({% static 'assets/img/images6.png' %});">
+    <div class="overlay-animate"></div>
+    <div class="container-animate">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center custom-branch counter-wrap-animate ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="custom-branch">
+                                <i class="fas fa-mug-hot icon-animate" style="font-size: 50px;"></i>   
+                                <div class="number custom-branch" data-number="100">0</div>
+                                <div class="custom-branch-span custom-branch">Kahveler</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center custom-branch counter-wrap-animate ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="custom-branch">
+                                <i class="fas fa-birthday-cake icon-animate" style="font-size: 50px; "></i>
+                                <div class="number custom-branch" data-number="100">0</div>
+                                <div class="custom-branch-span custom-branch">Pastalar</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center custom-branch counter-wrap-animate ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="custom-branch">
+                                <i class="fas fa-grin-beam icon-animate" style="font-size: 50px;"></i>
+                                <div class="number custom-branch" data-number="100">0</div>
+                                <div class="custom-branch-span custom-branch">Memnuniyet</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center custom-branch counter-wrap-animate ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="custom-branch">
+                                <i class="fas fa-plus icon-animate" style="font-size: 50px;"></i>
+                                <div class="number custom-branch" data-number="100">0</div>
+                                <div class="custom-branch-span custom-branch">Toplam</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- about us2 end-->
+
+
+<!-- Gallery start-->
+<section class="background-section" >
+  <h2 id="resimler" style="font-family:'Brush Script MT', cursive">RESIMLER</h2>
+<div class="custom-carousel-container" style="margin: 0; text-align: center; font-family: sans-serif; color: #fefefe;">
+  <div class="custom-container"  data-aos="zoom-in" data-aos-delay="100" >
+      <div class="custom-carousel">
+      <div class="custom-carousel__face"><span>This is something</span></div>
+      <div class="custom-carousel__face"><span>Very special</span></div>
+      <div class="custom-carousel__face"><span>Special is the key</span></div>
+      <div class="custom-carousel__face"><span>For you</span></div>
+      <div class="custom-carousel__face"><span>Just give it</span></div>
+      <div class="custom-carousel__face"><span>A try</span></div>
+      <div class="custom-carousel__face"><span>And see</span></div>
+      <div class="custom-carousel__face"><span>How IT Works</span></div>
+      <div class="custom-carousel__face"><span>Woow</span></div>
+      </div>
+  </div>
+</div> 
+</section>
+<!-- Gallery end-->
+
+
+<!-- chef start-->
+<section class="container-testimonial" style="margin-top: 100px;" id="şef">
+  <h2 style="font-family:'Brush Script MT', cursive">ŞEF</h2>
+  <img class="chef-head-img" src="{% static 'assets/img/chef2.png' %}" alt="Testimonial Image">
+  <div class="testimonial">
+    <div class="pic">
+      <img src="{% static 'assets/img/bg_4.jpg' %}" alt="Testimonial Image">
+    </div>
+    <p class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at metus vel felis consequat posuere ac eget ex.
+    </p>
+  </div>
+</section>
+<!-- chef end-->
+
+  
+<!-- Contact Start-->
+<section class="ftco-section contact-section" style=" background-image: url({% static 'assets/img/bg_4.jpg' %});" id="iletişim">
+  <h2>ILETIŞIM</h2>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 order-md-first" data-aos="fade-up" style="padding-right:30px;">
+                <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-6 order-md-last ftco-animate" data-aos="fade-up">
+                <form action="{% url 'contact' %}" method="post" class="contact-form" style="border:2px solid#862d85; padding:10px;
+                border-radius:30px;">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Gökhan Atay"  >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Gökhan@Atay.com">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="Konu">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" cols="30" rows="7" class="form-control" placeholder="Mesaj"></textarea>
+                    </div>
+                    <div class="form-group text-center" style="padding-top:10px;">
+                        <input type="submit" value="Gönder" class="btn btn-primary py-3 px-5" id="hh" >
+                        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+
+                        {% if success_message %}
+                            <div class="alert alert-success">
+                                {{ success_message }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact End-->
+
+
+<section class="ftco-section ftco-services">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5">
+            <span><i class="fas fa-coffee"></i></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Easy to Order</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5">
+            <span><i class="fas fa-truck"></i></span>
+          </div>
+          <div class="media-body">
+            <h3 class="heading">Fastest Delivery</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>      
+      </div>
+      <div class="col-md-4 ftco-animate">
+        <div class="media d-block text-center block-6 services">
+          <div class="icon d-flex justify-content-center align-items-center mb-5">
+            <span><i class="fas fa-book"></i></span></div>
+          <div class="media-body">
+            <h3 class="heading">Quality Coffee</h3>
+            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

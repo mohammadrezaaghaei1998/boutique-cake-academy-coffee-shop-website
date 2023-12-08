@@ -1,0 +1,15 @@
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.as_p }}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Select Product Type</button>
+</form>
+
+{% endblock content %}
+
+
+

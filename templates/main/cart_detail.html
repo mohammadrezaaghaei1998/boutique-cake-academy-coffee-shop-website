@@ -1,0 +1,100 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<section class="card-page" style="background: #ddd; min-height: 100vh; vertical-align: middle; display: flex; font-family: sans-serif; font-size: 0.8rem; font-weight: bold;">
+    {% if messages %}
+    <ul class="messages" style="color: black;">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="shopping-card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="shopping-title">
+                    <div class="row">
+                        <div class="col"><h4><b>AlIŞVERIŞ SEPETI</b></h4></div>
+                        <div class="col align-self-center text-right text-muted">{{ total_items }} ÖĞE</div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom">
+                    {% if cart_items %}
+                    {% for cart_item in cart_items %}
+                    <div class="row align-items-center">
+                        <div class="col-2 shopping-img">
+                            <img class="img-fluid" style="padding: 10px 0 10px 0;" src="{% if cart_item.academy_product %}{{ cart_item.academy_product.image.url }}{% elif cart_item.coffee_delivery %}{{ cart_item.coffee_delivery.image.url }}{% endif %}">
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted">
+                                {% if cart_item.academy_product %}
+                                {{ cart_item.academy_product.name }}
+                                {% elif cart_item.coffee_delivery %}
+                                {{ cart_item.coffee_delivery.name }}
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                {% if cart_item.academy_product %}
+                                {{ cart_item.academy_product.description }}
+                                {% elif cart_item.coffee_delivery %}
+                                {{ cart_item.coffee_delivery.description }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <a class="quantity-btn" href="{% url 'item_decrement' cart_item.pk %}">-</a>
+                            <a href="#" class="quantity-btn border">{{ cart_item.quantity }}</a>
+                            <a class="quantity-btn" href="{% url 'item_increment' cart_item.pk %}">+</a>
+                        </div>
+
+                        <div class="col">TL {{ cart_item.get_total_item_price }}</div>
+
+
+                        <div class="col">
+                            {% if cart_item.academy_product_id %}
+                                <a href="{% url 'item_clear' academy_product_id=cart_item.academy_product_id  coffee_delivery_id=0 %}" class="quantity-btn" style="color:red;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            {% elif cart_item.coffee_delivery_id %}
+                                <a href="{% url 'item_clear' coffee_delivery_id=cart_item.coffee_delivery_id  academy_product_id=0 %}" class="quantity-btn" style="color:red;">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="back-to-shop"><a class="quantity-btn" href="{% url 'home' %}">&leftarrow;</a><span class="text-muted">ALIŞVERIŞE DEVAM ET</span></div>
+                    {% else %}
+                    <p>SEPETINIZ BOŞ.</p>
+                    <div class="back-to-shop"><a class="quantity-btn" href="{% url 'home' %}">&leftarrow;</a><span class="text-muted">ALIŞVERIŞE DEVAM ET</span></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-4 summary">
+                <div><h5><b>ÖZET</b></h5></div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left: 5px;"> {{ total_items }} ÖĞE</div>
+                    <div class="col text-right">TL {{ total_item_price }}</div>
+                </div>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOPLAM FIYAT</div>
+                    <div class="col text-right">TL {{ total_item_price }}</div>
+                </div>
+                
+                <a href="{% url 'index'  %}">
+                    <button class="checkout-btn">Ödeme</button>
+                </a>
+                <a href="{% url 'cart_clear'%}">
+                    <button class="checkout-btn" style="background:red;">Kartı sil</button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}

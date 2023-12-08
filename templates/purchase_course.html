@@ -1,0 +1,90 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme</title>
+    <link rel="stylesheet" href="{% static 'assets/css/style22.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    
+    
+
+
+<div class="fancy">
+    <span>ÖDEME</span>
+</div>
+
+    <form id="odeme-form" method="POST" class="userinfo-form" action="{% url 'odeme' course.id %}">
+        {% csrf_token %}
+        <div class="CCBackground">
+            <div class="outercontainer">
+                <div class="card-wrapper"></div>
+                    <div class="formcontainer">
+                        <div class="form-inline text-right">
+                            <div class="form-groupsss">
+                                <input class="form-control" placeholder="Kart numarası" type="text" name="number">
+                                <input class="form-control" placeholder="Ad Soyad" type="text" name="name">
+                            </div>
+                        </div>
+                        <div class="form-inline text-right">
+                            <div class="form-groupsss">
+                                <input class="form-control" placeholder="AA/YY" type="text" name="expiry">
+                                <input class="form-control" placeholder="CVC" type="text" name="cvc">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right purchasebtn">
+                        <button class="btn btn-success">Öde</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info-info">
+        <div class="info">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-groups">
+                        <label for="name" id="names">Ad SoyAd:</label>
+                        <input class="form-controls" placeholder="Gökhan Atay" type="text" name="full_name" id="full_name">
+                        <label for="number" id="cep">Cep:</label>
+                        <input class="form-controls" placeholder="+90552***8519" type="text" name="phone_number" id="phone_number">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-groups">
+                        <label for="email">E-posta:</label>
+                        <input class="form-controls" placeholder="Gökhan@Atay.com" type="email" name="email" id="email">
+                        <label for="street" id="il">İl:</label>
+                        <input class="form-controls" placeholder="İstanbul" type="text" name="city" id="city">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-groups">
+                        <label for="district">İlçe:</label>
+                        <input class="form-controls" placeholder="Şişli" type="text" name="district" id="district">
+                        <label for="street" id="streets">Sokak:</label>
+                        <input class="form-controls" placeholder="Lati Lokum sk" type="text" name="street" id="street">
+                    </div>
+                </div>
+            </div>
+            <div class="form-groups">
+                <label class="open-address" for="address">Açık adres:</label>
+                <textarea class="form-controls" placeholder="No 7 " name="address" id="address" rows="4"></textarea>
+            </div>
+        </div>
+        </div>
+       
+    </form>
+
+    <script src="{% static 'assets/js/js.js' %}"></script>
+    
+
+</body>
+</html>
